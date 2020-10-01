@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+#define ll          long long
+#define pb          push_back
+#define pii         pair<int,int>
+#define vi          vector<int>
+#define vii         vector<pii>
+#define mi          map<int,int>
+#define mii         map<pii,int>
+#define all(a)      (a).begin(),(a).end()
+#define ff           first
+#define ss           second
+#define sz(x)       (int)x.size()
+#define endl        '\n'
+#define hell        1000000007
+#define rep(i,a,b)  for(int i=a;i<b;i++)
+using namespace std;
+
+int main(){
+	cin.tie(NULL);
+	ios::sync_with_stdio(false);
+	//insert code
+	int n,k,m;
+	cin>>n>>k;
+	vii arr;
+	rep(i,0,n){
+		cin>>m;
+		arr.pb(make_pair(m,i));
+	}
+	sort(all(arr));
+	int start = 0, end = sz(arr)-1;
+	while (start<end){
+		int val = arr[start].ff +  arr[end].ff;
+		if (val == k){
+			cout<<arr[start].ss+1<<" "<<arr[end].ss+1;
+			return 0;
+		}
+		else if (val<k)start++;
+		else end--;
+	}
+	cout<<"IMPOSSIBLE"<<endl;
+	return 0;
+}
